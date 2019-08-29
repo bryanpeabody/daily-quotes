@@ -20,6 +20,7 @@ def post_to_twitter():
     #
     with open("./quotes.txt") as f:
         content = f.readlines()
+
     content = [x.strip() for x in content]
 
     #
@@ -32,11 +33,13 @@ def post_to_twitter():
     # Post to Twitter
     #
     thequote = content[idx]
+
     if len(thequote) > 0:
         api = tweepy.API(auth)
         api.update_status(thequote)
 
 if __name__ == "__main__":
+    # 0 is file name, then param1, param2 ...
     if len(sys.argv) != 5:
         print("Please pass in consumer key, consumer secret, access token and access token secret.")
         exit()
